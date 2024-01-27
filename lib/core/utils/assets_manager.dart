@@ -1,5 +1,7 @@
-const String imagePath = "assets/images";
+const String imagePath = "assets/";
 
 class ImageAssets {
-  static const String logo = "$imagePath/logo.png";
+  static const String facebook = "$imagePath/icons/facebook.png";
+  static const String googlePlus = "$imagePath/icons/google-plus.png";
+  static const String twitter = "$imagePath/icons/twitter.png";
 }

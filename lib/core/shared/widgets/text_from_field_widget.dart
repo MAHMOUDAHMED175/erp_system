@@ -1,3 +1,4 @@
+import 'package:erp_system/core/utils/styles_manager.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/color_manager.dart';
@@ -13,18 +14,17 @@ Widget defaultFormField({
   String? Function(String?)? submit,
   String? Function(String?)? change,
   IconData? suffixIcon,
-  String? hintText,
+  required String hintText,
   labelText,
   IconData? prefix,
   Color? fillsColor,
   bool? readOnly,
   BorderRadius? border,
   int? flex,
-  context,
+  required BuildContext context,
   colorSuffixIcon,
 }) =>
     TextFormField(
-      textAlign: TextAlign.center,
       keyboardType: type,
       controller: controller,
       obscureText: isPassword,
@@ -34,29 +34,31 @@ Widget defaultFormField({
       validator: validate,
       onChanged: change,
       onTap: taped,
-      readOnly: readOnly ?? false,
+      // readOnly: readOnly ?? false,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.all(2),
-        hintStyle: TextStyle(
-          color: Colors.black.withOpacity(0.4),
-
-          // تغيير لون الـ hint إلى اللون الأزرق
+        hintStyle: StyleHelper.textStyle16Regular(context).copyWith(
+          color: ColorManager.textDarkGrayColor,
+          fontSize: 22,
         ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppPadding.p4),
-          borderSide: BorderSide(color: ColorManager.containerF1GrayColor),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: border ?? BorderRadius.circular(AppPadding.p8),
-          borderSide: BorderSide(color: ColorManager.containerF1GrayColor),
-        ),
-        filled: true,
-        fillColor: fillsColor ?? ColorManager.containerF1GrayColor,
+        // focusedBorder: const OutlineInputBorder(
+        // borderRadius:
+        //     BorderRadius.only(bottomRight: Radius.circular(AppPadding.p8)),
+        // borderSide:
+        //     BorderSide(width: 0, color: ColorManager.textDarkGrayColor),
+        // ),
+        // enabledBorder: const OutlineInputBorder(
+        // borderRadius: border ?? BorderRadius.circular(AppPadding.p0),
+        // borderSide:
+        //     BorderSide(width: 0, color: ColorManager.textDarkGrayColor),
+        // ),
+        // filled: true,
+        // fillColor: fillsColor ?? ColorManager.containerF1GrayColor,
         prefixIcon: prefix != null ? Icon(prefix) : null,
         hintText: hintText,
         suffixIcon: suffixIcon != null
             ? SizedBox(
-                width: MediaQuery.sizeOf(context).width * 0.03,
+                width: MediaQuery.of(context).size.width * 0.2,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -64,14 +66,14 @@ Widget defaultFormField({
                       Container(
                         height: AppSize.s20,
                         width: 1.5,
-                        color: ColorManager.containerF1GrayColor,
+                        color: ColorManager.textDarkGrayColor,
                       ),
                     if (suffixIcon != null)
                       const SizedBox(
                         width: AppSize.s20,
                       ),
                     SizedBox(
-                      width: MediaQuery.sizeOf(context).width * 0.01,
+                      // width: MediaQuery.of(context).size.width * 0.01,
                       child: IconButton(
                         onPressed: () {
                           suffixPressd!();
@@ -79,8 +81,8 @@ Widget defaultFormField({
                         icon: Icon(
                           suffixIcon,
                           size: AppSize.s20,
-                          color: colorSuffixIcon ??
-                              ColorManager.containerF1GrayColor,
+                          color:
+                              colorSuffixIcon ?? ColorManager.textDarkGrayColor,
                         ),
                       ),
                     ),
@@ -89,6 +91,6 @@ Widget defaultFormField({
               )
             : null,
         labelText: labelText,
-        border: const OutlineInputBorder(),
+        // border: const OutlineInputBorder(),
       ),
     );

@@ -1,8 +1,8 @@
+import 'package:erp_system/core/extensions/mediaquery.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/color_manager.dart';
 import '../../utils/styles_manager.dart';
-import '../../utils/values_manager.dart';
 //  in core/shared/Widget/
 
 class CustomTextButton extends StatelessWidget {
@@ -30,26 +30,28 @@ class CustomTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: heightButton ?? AppSize.s40,
-      width: width ?? 100,
+      height: heightButton ?? context.width(0.13),
+      width: width ?? context.width(0.6),
       child: TextButton(
         onPressed: onPressed,
         style: TextButton.styleFrom(
           backgroundColor: backgroundColor,
           shape: RoundedRectangleBorder(
-            side: BorderSide(
-                color: ColorManager.containerF1GrayColor, width: 1.0),
+            side: const BorderSide(color: ColorManager.white, width: 5),
             // إضافة حدود سوداء بسمك 2 بكسل
 
             borderRadius: BorderRadius.circular(
-              valueDoubleBorderRadius ?? AppPadding.p12,
+              valueDoubleBorderRadius ?? 25,
             ),
           ),
         ),
         child: Text(text,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: StyleHelper.textStyle14Regular(context)
+            style: StyleHelper.textStyle16Regular(context).copyWith(
+              color: textColor,
+              fontSize: fontSize,
+            )
             // getLightStyle(
             //     color: textColor,
             //     fontSize: fontSize!,
