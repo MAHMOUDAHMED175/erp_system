@@ -30,7 +30,7 @@ class CustomTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: heightButton ?? context.width(0.13),
+      height: heightButton ?? context.width(0.16),
       width: width ?? context.width(0.6),
       child: TextButton(
         onPressed: onPressed,
@@ -51,12 +51,7 @@ class CustomTextButton extends StatelessWidget {
             style: StyleHelper.textStyle16Regular(context).copyWith(
               color: textColor,
               fontSize: fontSize,
-            )
-            // getLightStyle(
-            //     color: textColor,
-            //     fontSize: fontSize!,
-            //   )
-            ),
+            )),
       ),
     );
   }

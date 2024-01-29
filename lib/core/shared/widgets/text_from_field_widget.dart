@@ -38,6 +38,10 @@ Widget defaultFormField({
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.all(2),
         hintStyle: StyleHelper.textStyle16Regular(context).copyWith(
+          color: ColorManager.grey200,
+          fontSize: 22,
+        ),
+        labelStyle: StyleHelper.textStyle16Regular(context).copyWith(
           color: ColorManager.textDarkGrayColor,
           fontSize: 22,
         ),

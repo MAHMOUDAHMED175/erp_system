@@ -18,8 +18,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -29,10 +27,8 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         scrollBehavior: MyCustomScrollBehavior(),
-        // builder: DevicePreview.appBuilder,
-        // locale: DevicePreview.locale(context),
         onGenerateRoute: RouteGenerator.getRoute,
-        initialRoute: Routes.login,
+        initialRoute: Routes.register,
         debugShowCheckedModeBanner: false,
       ),
     );
@@ -40,7 +36,6 @@ class MyApp extends StatelessWidget {
 }
 
 class MyCustomScrollBehavior extends MaterialScrollBehavior {
-  // Override behavior methods and getters like dragDevices
   @override
   Set<PointerDeviceKind> get dragDevices => {
         PointerDeviceKind.touch,
